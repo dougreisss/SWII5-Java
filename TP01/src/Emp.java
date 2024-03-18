@@ -1,3 +1,6 @@
+/** 
+ * @author Douglas Reis e Lucas Aquino 
+ * */
 
 public class Emp {
 private int id;

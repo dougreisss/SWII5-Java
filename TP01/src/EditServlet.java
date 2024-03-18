@@ -1,4 +1,7 @@
 
+/** 
+ * @author Douglas Reis e Lucas Aquino 
+ * */
 
 import java.io.IOException;
 import java.io.PrintWriter;
