@@ -1,3 +1,5 @@
+/** @author Douglas Reis e Lucas Aquino */
+
 package Model;
 
 public class Product {

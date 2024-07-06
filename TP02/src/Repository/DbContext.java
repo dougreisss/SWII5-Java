@@ -1,3 +1,5 @@
+/** @author Douglas Reis e Lucas Aquino */
+
 package Repository;
 
 import Model.Product;
