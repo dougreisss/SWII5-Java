@@ -5,7 +5,6 @@
 
 <c:url value="/GetProductsServlet" var="LstProducts" />
 <c:url value="/AddProductServlet" var="AddProducts" />
-<c:url value="/UpdateProductServlet" var="UpdateProducts" />
 
 <!DOCTYPE html>
 <html>
