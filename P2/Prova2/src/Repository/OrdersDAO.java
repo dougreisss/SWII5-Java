@@ -60,8 +60,9 @@ public class OrdersDAO extends BaseDAO<Orders> {
 
 		this.connect();
 
-		Statement statement = jdbcConnection.createStatement();
-		ResultSet resultSet = statement.executeQuery(query);
+		PreparedStatement statement = jdbcConnection.prepareStatement(query);
+		statement.setInt(1, id);
+		ResultSet resultSet = statement.executeQuery();
 
 		if (resultSet.next()) {
 
@@ -106,8 +107,8 @@ public class OrdersDAO extends BaseDAO<Orders> {
 	@Override
 	public boolean update(Orders entity) throws SQLException {
 
-		String query = "update orders.orders set Purch_Amt = ?, Ord_Date = ?, Customer_Id = ?, Salesman_Id = ? where Ord_No = ?";
-
+		String query = "UPDATE orders.orders SET Purch_Amt = ?, Ord_Date = ?, Customer_Id = ?, Salesman_Id = ? WHERE Ord_No = ?";
+		
 		this.connect();
 
 		PreparedStatement statement = jdbcConnection.prepareStatement(query);
@@ -117,18 +118,18 @@ public class OrdersDAO extends BaseDAO<Orders> {
 		statement.setInt(4, entity.getSalesmanId());
 		statement.setInt(5, entity.getOrdNo());
 
-		boolean rowDeleted = statement.executeUpdate() > 0;
+		boolean rowUpdated = statement.executeUpdate() > 0;
 
 		statement.close();
 		this.disconnect();
 
-		return rowDeleted;
+		return rowUpdated;
 	}
 
 	@Override
 	public boolean delete(Orders entity) throws SQLException {
 
-		String query = "delete from orders.orders where Ord_No where = ?";
+		String query = "delete from orders.orders where Ord_No = ?";
 
 		this.connect();
 

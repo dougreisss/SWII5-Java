@@ -115,7 +115,7 @@ public class CustomerServlet extends HttpServlet {
 		String custName = request.getParameter("name");
 		String city = request.getParameter("city");
 		int grade = Integer.parseInt(request.getParameter("grade"));
-		int salesmanId = 4;
+		int salesmanId = Integer.parseInt(request.getParameter("salesmanId"));
 
 		Customer customer = new Customer(id, custName, city, grade, salesmanId);
 

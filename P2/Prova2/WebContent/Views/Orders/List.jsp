@@ -39,29 +39,29 @@
                         </thead>
                         <tbody>
                             <c:if test="${list.size() > 0}">
-                                <c:forEach var="ordem" items="${list}">
+                                <c:forEach var="order" items="${list}">
                                     <tr>
                                         <td>
-                                            <c:out value="${ordem.getOrdNo()}" />
+                                            <c:out value="${order.getOrdNo()}" />
                                         </td>
                                         <td>
-                                            <c:out value="${ordem.getPurchAmt()}" />
+                                            <c:out value="${order.getPurchAmt()}" />
                                         </td>
                                         <td>
- 											<fmt:formatDate value="${ordem.getOrdDate()}" pattern="dd/MM/yyyy" />  
+ 											<fmt:formatDate value="${order.getOrdDate()}" pattern="dd/MM/yyyy" />  
                                 		</td>
                                         <td>
-                                            <c:out value="${ordem.getCustomerId()}" />
+                                            <c:out value="${order.getCustomerId()}" />
                                         </td>
                                         <td>
-                                            <c:out value="${ordem.getSalesmanId()}" />
+                                            <c:out value="${order.getSalesmanId()}" />
                                         </td>
                                         <td>
                                             <a
-                                                href="/Prova2/Order/edit?id=<c:out value='${ordem.getOrdNo()}'/>">Edit</a>
+                                                href="/Prova2/Order/edit?id=<c:out value='${order.getOrdNo()}'/>">Edit</a>
                                             &nbsp;&nbsp;&nbsp;&nbsp;
                                             <a
-                                                href="/Prova2/Order/delete?id=<c:out value='${ordem.getOrdNo()}'/>">Delete</a>
+                                                href="/Prova2/Order/delete?id=<c:out value='${order.getOrdNo()}'/>">Delete</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

@@ -116,9 +116,12 @@ public class CustomerDAO extends BaseDAO<Customer> {
 		statement.setInt(4, entity.getSalesmanId());
 		statement.setInt(5, entity.getCustomerId());
 
+		boolean rowUpdated = statement.executeUpdate() > 0;
+		
+		statement.close();
 		this.disconnect();
 
-		return false;
+		return rowUpdated;
 	}
 
 	@Override
