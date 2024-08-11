@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-        <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
             <!DOCTYPE html>
             <html>
 
@@ -58,8 +59,8 @@
                             <tr>
                                 <th><label for="ordDate">Date:</label></th>
                                 <td>
-                                    <input type="text" id="ordDate" name="ordDate" value="<fmt:formatDate value="
-                                        ${order.getOrdDate()}" pattern="dd/MM/yyyy" />" />
+                                    <fmt:formatDate value="${order.ordDate}" pattern="yyyy/MM/dd" var="formattedDate" />
+							        <input type="date" id="ordDate" name="ordDate" value="${formattedDate}" />    
                                 </td>
                             </tr>
                             <tr>

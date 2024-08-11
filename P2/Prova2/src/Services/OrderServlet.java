@@ -111,7 +111,7 @@ public class OrderServlet extends HttpServlet {
 
 		double purchAmt = Double.parseDouble(request.getParameter("purchAmt"));
 		String ordDateStr = request.getParameter("ordDate");
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date ordDate = dateFormat.parse(ordDateStr);
 		int customerId = Integer.parseInt(request.getParameter("customerId"));
 		int salesmanId = Integer.parseInt(request.getParameter("salesmanId"));
