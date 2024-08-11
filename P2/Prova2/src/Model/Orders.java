@@ -7,7 +7,7 @@ package Model;
 import java.util.Date;
 
 public class Orders {
-	private int ordNo;
+    private int ordNo;
     private double purchAmt;
     private Date ordDate;
     private int customerId;
@@ -26,7 +26,7 @@ public class Orders {
         this.customerId = customerId;
         this.salesmanId = salesmanId;
     }
-    
+
     public Orders(int ordNo, double purchAmt, Date ordDate, int customerId, int salesmanId) {
         this(ordNo);
         this.purchAmt = purchAmt;

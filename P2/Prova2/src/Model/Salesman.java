@@ -5,10 +5,10 @@
 package Model;
 
 public class Salesman {
-	private int salesmanId;
-	private String name;
-	private String city;
-	private double commission;
+    private int salesmanId;
+    private String name;
+    private String city;
+    private double commission;
 
     public Salesman() {
     }
