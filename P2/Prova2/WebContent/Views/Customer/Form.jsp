@@ -66,6 +66,11 @@
                                     value="<c:out value='${customer.getGrade()}' />" /></td>
                         </tr>
                         <tr>
+                            <th><label for="salesmanId">Salesman ID:</label></th>
+                            <td><input type="number" id="salesmanId" name="salesmanId" 
+                            		value="<c:out value='${customer.getSalesmanId()} }'/>"/></td>
+                        </tr>
+                        <tr>
                             <td colspan="2" class="form-submit">
                                 <input type="submit" value="Save" />
                             </td>
