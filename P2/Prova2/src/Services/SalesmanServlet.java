@@ -1,6 +1,6 @@
 /**
  * @author Douglas Reis e Lucas Aquino
- */
+*/
 
 package Services;
 
@@ -26,26 +26,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "CustomerServlet", urlPatterns = { "/Customer/*" }, loadOnStartup = 1)
-public class CustomerServlet extends HttpServlet {
+@WebServlet(name = "SalesmanServlet", urlPatterns = { "/Salesman/*" }, loadOnStartup = 1)
+public class SalesmanServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private CustomerDAO _customerDAO;
+
+	private SalesmanDAO _salesmanDAO;
 
 	public void init() {
 		String jdbcURL = getServletContext().getInitParameter("jdbcURL");
 		String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
 		String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 
-		this._customerDAO = new CustomerDAO(jdbcURL, jdbcUsername, jdbcPassword);
+		this._salesmanDAO = new SalesmanDAO(jdbcURL, jdbcUsername, jdbcPassword);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getPathInfo();
 
 		try {
@@ -74,60 +73,56 @@ public class CustomerServlet extends HttpServlet {
 		}
 	}
 
-	private void list(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
-		List<Customer> list = _customerDAO.getAll();
+	private void list(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+		List<Salesman> list = _salesmanDAO.getAll();
 		request.setAttribute("list", list);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Views/Customer/List.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Views/Salesman/List.jsp");
 		dispatcher.forward(request, response);
 	}
 
-	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Views/Customer/Form.jsp");
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Views/Salesman/Form.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Customer customer = _customerDAO.getById(id);
+		Salesman salesman = _salesmanDAO.getById(id);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Views/Customer/Form.jsp");
-		request.setAttribute("customer", customer);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Views/Salesman/Form.jsp");
+		request.setAttribute("salesman", salesman);
 		dispatcher.forward(request, response);
 	}
 
 	private void insert(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-		String custName = request.getParameter("name");
+		String name = request.getParameter("name");
 		String city = request.getParameter("city");
-		int grade = Integer.parseInt(request.getParameter("grade"));
-		int salesmanId = 1;
+		double commission = Double.parseDouble(request.getParameter("commission"));
 
-		Customer customer = new Customer(custName, city, grade, salesmanId);
-		_customerDAO.insert(customer);
+		Salesman salesman = new Salesman(name, city, commission);
+		_salesmanDAO.insert(salesman);
 		response.sendRedirect("list");
 	}
 
 	private void update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		String custName = request.getParameter("name");
-		String city = request.getParameter("city");
-		int grade = Integer.parseInt(request.getParameter("grade"));
-		int salesmanId = 0;
+		String name = request.getParameter("nome");
+		String city = request.getParameter("cidade");
+        double commission = Double.parseDouble(request.getParameter("comissao"));
 
-		Customer customer = new Customer(id, custName, city, grade, salesmanId);
+		Salesman salesman = new Salesman(id, name, city, commission);
 
-		_customerDAO.update(customer);
+		_salesmanDAO.update(salesman);
 		response.sendRedirect("list");
 	}
 
 	private void delete(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 
-		Customer customer = new Customer(id);
-		_customerDAO.delete(customer);
+		Salesman salesman = new Salesman(id);
+		_salesmanDAO.delete(salesman);
 
 		response.sendRedirect("list");
 	}
