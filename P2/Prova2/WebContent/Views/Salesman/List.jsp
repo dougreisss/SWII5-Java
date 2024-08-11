@@ -14,10 +14,18 @@
             <center>
                 <h1>Salesman</h1>
                 <h2>
+                    <a href="/Prova2/Customer/new">Add New Customer</a>
+                    <br>
+                    <a href="/Prova2/Customer/list">List All Customer</a>
+                    <br>
                     <a href="/Prova2/Salesman/new">Add New Salesman</a>
-                    &nbsp;&nbsp;&nbsp;
+                    <br>
                     <a href="/Prova2/Salesman/list">List All Salesman</a>
-                    &nbsp;&nbsp;&nbsp;
+                    <br>
+                    <a href="/Prova2/Order/new">Add New Order</a>
+                    <br>
+                    <a href="/Prova2/Order/list">List All Order</a>
+                    <br>
                 </h2>
             </center>
             <table>

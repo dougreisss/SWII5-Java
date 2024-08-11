@@ -108,9 +108,9 @@ public class SalesmanServlet extends HttpServlet {
 
 	private void update(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("nome");
-		String city = request.getParameter("cidade");
-        double commission = Double.parseDouble(request.getParameter("comissao"));
+		String name = request.getParameter("name");
+		String city = request.getParameter("city");
+        double commission = Double.parseDouble(request.getParameter("commission"));
 
 		Salesman salesman = new Salesman(id, name, city, commission);
 
